@@ -1,5 +1,15 @@
 import { SimplexTable } from './SimplexTable';
 
+type Solution = {
+  basic: Array<{
+    variable: string;
+    value: number;
+  }>;
+  notBasic: Array<{
+    variable: string;
+    value: number;
+  }>;
+};
 export class SimplexCalculator {
   private simplexTable: SimplexTable;
 
@@ -56,5 +66,48 @@ export class SimplexCalculator {
     while (!this.isSolved()) {
       this.iterate();
     }
+  }
+
+  public getSolution(): Solution {
+    const table = this.simplexTable.getTable();
+    const solution: Solution = {
+      basic: [],
+      notBasic: [],
+    };
+
+    for (let j = 0; j < table[0].length - 1; j++) {
+      let isBasic = true;
+      let index = 0;
+      let amountOfNumber = 0;
+
+      for (let i = 0; i < table.length; i++) {
+        if (table[i][j] !== 0) {
+          amountOfNumber++;
+        }
+
+        if (table[i][j] === 1) {
+          index = i;
+        }
+
+        if (table[i][j] > 1 || amountOfNumber > 1) {
+          isBasic = false;
+          break;
+        }
+      }
+
+      if (isBasic) {
+        solution.basic.push({
+          variable: this.simplexTable.getHeader()[j],
+          value: this.simplexTable.getBValue(index),
+        });
+      } else {
+        solution.notBasic.push({
+          variable: this.simplexTable.getHeader()[j],
+          value: 0,
+        });
+      }
+    }
+
+    return solution;
   }
 }

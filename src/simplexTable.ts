@@ -49,6 +49,10 @@ export class SimplexTable {
     return this.numberOfLooseness;
   }
 
+  public getHeader(): Array<string> {
+    return this.header;
+  }
+
   public getLine(index: number): Array<number> {
     return this.table[index];
   }
@@ -105,8 +109,6 @@ export class SimplexTable {
       }
     }
 
-    console.log('Pivo Collumn', lowerValue);
-
     return lowerValueIndex;
   }
 
@@ -127,8 +129,6 @@ export class SimplexTable {
         lowerPositiveValueIndex = i;
       }
     }
-
-    console.log('Lower positive', lowerPositiveValue);
 
     return lowerPositiveValueIndex;
   }
