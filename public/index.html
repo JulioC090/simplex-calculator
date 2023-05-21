@@ -11,7 +11,45 @@
     <title>Snowpack App</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript
+      >Você precisa ter o Javascript habilitado para executar esse
+      site!</noscript
+    >
+
+    <h1>Calculador Simplex</h1>
+    <p>
+      Insira a função objetiva e suas restrições e encontre a solução ótima que
+      a maximiza
+    </p>
+    <div id="form">
+      <span>Maximizar</span>
+      <div id="objective-function-input">
+        <div class="expression">
+          Z =
+          <input type="number" /> X1
+        </div>
+        <div class="controls">
+          <button class="add-button">Adicionar</button>
+          <button class="remove-button">Remover</button>
+        </div>
+      </div>
+      <span>Restrições</span>
+      <div id="restrictions-input">
+        <div class="restrictions">
+          <div class="restriction">
+            <input type="number" /> X1 ≤
+            <input type="number" />
+          </div>
+        </div>
+        <div class="controls">
+          <button class="add-button">Adicionar</button>
+          <button class="remove-button">Remover</button>
+        </div>
+      </div>
+      <button id="solve">Resolver</button>
+      <div id="result">
+      </div>
+    </div>
     <script type="module" src="/dist/index.js"></script>
   </body>
 </html>
