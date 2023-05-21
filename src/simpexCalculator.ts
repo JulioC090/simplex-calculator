@@ -1,6 +1,6 @@
 import { SimplexTable } from './SimplexTable';
 
-type Solution = {
+export type Solution = {
   basic: Array<{
     variable: string;
     value: number;
