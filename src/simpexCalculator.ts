@@ -1,4 +1,4 @@
-import { SimplexTable } from "./simplexTable";
+import { SimplexTable } from './SimplexTable';
 
 export class SimplexCalculator {
   private simplexTable: SimplexTable;
@@ -7,15 +7,18 @@ export class SimplexCalculator {
     this.simplexTable = table;
   }
 
+  public getSimplexTable() {
+    return this.simplexTable;
+  }
+
   public isSolved() {
     let line = this.simplexTable.getLine(0);
-    let numberOfVariables = this.simplexTable.getNumberOfVariables();
     let isSolved = true;
-    for (let i = 0; i < numberOfVariables; i++) {
-      if (line[i + 1] < 0) {
+    line.map((value) => {
+      if (value < 0) {
         isSolved = false;
       }
-    }
+    });
     return isSolved;
   }
 
@@ -26,7 +29,7 @@ export class SimplexCalculator {
       this.simplexTable.getBaseVariableCollumnIndex();
     let pivoElement = this.simplexTable.getElement(
       pivoLineIndex,
-      baseVariableCollumnIndex
+      baseVariableCollumnIndex,
     );
 
     let newPivoLine = this.simplexTable.getLine(pivoLineIndex).map((value) => {

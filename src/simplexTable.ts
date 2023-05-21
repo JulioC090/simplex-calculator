@@ -28,7 +28,7 @@ export class SimplexTable {
       this.table.push(currentTableLine);
     });
 
-    this.header.push("z");
+    this.header.push('z');
 
     for (let i = 0; i < this.numberOfVariables; i++) {
       this.header.push(`x${i + 1}`);
@@ -38,7 +38,7 @@ export class SimplexTable {
       this.header.push(`f${i + 1}`);
     }
 
-    this.header.push("b");
+    this.header.push('b');
   }
 
   public getNumberOfVariables(): number {
@@ -77,16 +77,35 @@ export class SimplexTable {
     return this.table;
   }
 
+  public getStringTable(): Array<Array<string>> {
+    const table: Array<Array<string>> = [];
+    table.push(this.header);
+
+    const convertedTable: Array<Array<string>> = [];
+    this.table.map((line) => {
+      const convertedLine: Array<string> = [];
+      line.map((value) => {
+        convertedLine.push((Math.round(value * 100) / 100).toString());
+      });
+      convertedTable.push(convertedLine);
+    });
+
+    table.push(...convertedTable);
+    return table;
+  }
+
   public getBaseVariableCollumnIndex(): number {
-    let lowerValue = this.table[0][1];
+    let lowerValue = this.table[0][0];
     let lowerValueIndex = 0;
 
-    for (let i = 1; i <= this.numberOfVariables; i++) {
+    for (let i = 1; i < this.table[0].length; i++) {
       if (this.table[0][i] < lowerValue) {
         lowerValue = this.table[0][i];
         lowerValueIndex = i;
       }
     }
+
+    console.log('Pivo Collumn', lowerValue);
 
     return lowerValueIndex;
   }
@@ -100,11 +119,16 @@ export class SimplexTable {
 
     for (let i = 2; i < this.table.length; i++) {
       let calculation = this.getBValue(i) / this.table[i][baseVariableCollumn];
-      if (calculation < lowerPositiveValue) {
+      if (
+        (calculation < lowerPositiveValue && calculation > 0) ||
+        lowerPositiveValue <= 0
+      ) {
         lowerPositiveValue = calculation;
         lowerPositiveValueIndex = i;
       }
     }
+
+    console.log('Lower positive', lowerPositiveValue);
 
     return lowerPositiveValueIndex;
   }
