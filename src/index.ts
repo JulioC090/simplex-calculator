@@ -1,21 +1,20 @@
-import { SimplexCalculator } from './simpexCalculator';
-import { SimplexTable } from './simplexTable';
+import { InputsManager } from './InputsManager';
+import { SimplexCalculator } from './SimpexCalculator';
+import { SimplexTable } from './SimplexTable';
+import { Table } from './Table';
 
-let matrix = [
-  [1, -2, -12, -7, 0],
-  [0, 1, 3, 2, 10000],
-  [0, 2, 2, 1, 4000],
-];
-let table = new SimplexTable(matrix);
+const inputsManager = new InputsManager(
+  'objective-function-input',
+  'restrictions-input',
+);
 
-console.log(table);
-console.log(table.getBaseVariableCollumnIndex());
-console.log(table.getPivoLineIndex());
-console.log(table.getCollumn(table.getBaseVariableCollumnIndex()));
-console.log(table.getLine(table.getPivoLineIndex()));
-console.log(table.getElement(1, 6));
+const tableElement = new Table('result', []);
 
-let calculator = new SimplexCalculator(table);
-
-calculator.solve();
-console.log(calculator);
+const solveButton = document.getElementById('solve');
+solveButton?.addEventListener('click', (event) => {
+  const simplexTable = new SimplexTable(inputsManager.getValues());
+  const simpexCalculator = new SimplexCalculator(simplexTable);
+  simpexCalculator.solve();
+  tableElement.setContent(simpexCalculator.getSimplexTable().getStringTable());
+  console.log(simpexCalculator);
+});
