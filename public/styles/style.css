@@ -1,0 +1,47 @@
+*,
+html,
+body,
+i,
+input {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+noscript {
+  background-color: #f4f4f5;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+}
+
+.error {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error h3 {
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 512px) and (min-height: 512px) {
+  noscript {
+    background: #111827f2;
+    background: linear-gradient(180deg, #111827f5 0%, #030712f1 100%);
+    padding: 2rem;
+  }
+
+  .error {
+    background-color: #f4f4f5;
+    border-radius: 2rem;
+  }
+}

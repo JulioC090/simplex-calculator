@@ -2,19 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Web site created using create-snowpack-app"
+      content="Uma calculadora que utiliza o algoritmo Simplex para encontrar uma solução que maximize uma função objetiva em base de restrições estabelecidas"
     />
-    <title>Snowpack App</title>
+    <title>Simplex Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <noscript
-      >Você precisa ter o Javascript habilitado para executar esse
-      site!</noscript
-    >
+    <noscript>
+      <div class="error">
+        <h3>Ops! Problemas técnicos.</h3>
+        <img src="./assets/svgs/javascript-error.svg" alt="Pessoa tendo problemas técnicos">
+        Por favor, habilite o JavaScript para utilizar este site.
+      </div>
+    </noscript>
 
     <h1>Calculador Simplex</h1>
     <p>
@@ -51,5 +58,6 @@
       </div>
     </div>
     <script type="module" src="./dist/index.js"></script>
+    <a href="https://storyset.com/people">People illustrations by Storyset</a>
   </body>
 </html>
