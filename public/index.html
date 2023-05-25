@@ -23,41 +23,48 @@
       </div>
     </noscript>
 
-    <h1>Calculador Simplex</h1>
-    <p>
-      Insira a função objetiva e suas restrições e encontre a solução ótima que
-      a maximiza
-    </p>
-    <div id="form">
-      <span>Maximizar</span>
-      <div id="objective-function-input">
-        <div class="expression">
-          Z =
-          <input type="number" /> X1
-        </div>
-        <div class="controls">
-          <button class="add-button">Adicionar</button>
-          <button class="remove-button">Remover</button>
-        </div>
-      </div>
-      <span>Restrições</span>
-      <div id="restrictions-input">
-        <div class="restrictions">
-          <div class="restriction">
-            <input type="number" /> X1 ≤
-            <input type="number" />
+    <main>
+      <h1>Calculadora Simplex</h1>
+      <p>
+        Forneça a função <b>objetivo</b> e suas respectivas <b>restrições</b> para que possamos encontrar a solução ótima que <b>maximize</b> seus resultados.
+      </p>
+      <div id="form">
+        <div class="form__input">
+          <h3>Maximizar</h3>
+          <div id="objective-function-input">
+            <div class="form__expression">
+              Z =
+              <input type="number" /> X1
+            </div>
+            <div class="form__input__controls">
+              <button class="controls__add"><img src="./assets/icons/plus.svg" alt="Adicionar"/></button>
+              <button class="controls__remove"><img src="./assets/icons/minus.svg" alt="Remover"></button>
+            </div>
           </div>
         </div>
-        <div class="controls">
-          <button class="add-button">Adicionar</button>
-          <button class="remove-button">Remover</button>
+        <div class="form__input">
+          <h3>Restrições</h3>
+          <div id="restrictions-input">
+            <div class="form__restrictions">
+              <div class="form__expression">
+                <input type="number" /> X1 ≤
+                <input type="number" />
+              </div>
+            </div>
+            <div class="form__input__controls">
+              <button class="controls__add"><img src="./assets/icons/plus.svg" alt="Adicionar"/></button>
+              <button class="controls__remove"><img src="./assets/icons/minus.svg" alt="Remover"></button>
+            </div>
+          </div>
+        </div>
+        <button id="solve">Resolver</button>
+        <div id="result">
         </div>
       </div>
-      <button id="solve">Resolver</button>
-      <div id="result">
-      </div>
-    </div>
+    </main>
+    <footer>
+      <a href="https://storyset.com/people">People illustrations by Storyset</a>
+    </footer>
     <script type="module" src="./dist/index.js"></script>
-    <a href="https://storyset.com/people">People illustrations by Storyset</a>
   </body>
 </html>

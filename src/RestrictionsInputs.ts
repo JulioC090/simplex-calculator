@@ -16,18 +16,24 @@ export class RestrictionsInputs {
       );
     }
 
-    this.restrictionsElement = this.element.querySelector('.restrictions');
+    this.restrictionsElement = this.element.querySelector(
+      '.form__restrictions',
+    );
     if (!this.restrictionsElement) {
       throw new Error(`RestrictionsInputs: restrictions element not found'`);
     }
 
-    this.addButton = this.element.querySelector('.controls .add-button');
+    this.addButton = this.element.querySelector(
+      '.form__input__controls .controls__add',
+    );
     if (!this.addButton) {
       throw new Error(`RestrictionsInputs: add button not found'`);
     }
     this.addButton.addEventListener('click', () => this.addRestrictionInput());
 
-    this.removeButton = this.element.querySelector('.controls .remove-button');
+    this.removeButton = this.element.querySelector(
+      '.form__input__controls .controls__remove',
+    );
     if (!this.removeButton) {
       throw new Error(`RestrictionsInputs: remove button not found'`);
     }
@@ -107,7 +113,7 @@ export class RestrictionsInputs {
 
     this.restrictionsInputs.map((restriction) => {
       const restrictionDiv = document.createElement('div');
-      restrictionDiv.classList.add('restriction');
+      restrictionDiv.classList.add('form__expression');
 
       restriction.map((input, index) => {
         restrictionDiv.append(input);

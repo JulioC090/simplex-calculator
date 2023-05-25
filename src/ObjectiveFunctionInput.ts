@@ -19,18 +19,22 @@ export class ObjectiveFunctionInput {
       );
     }
 
-    this.expressionElement = this.element.querySelector('.expression');
+    this.expressionElement = this.element.querySelector('.form__expression');
     if (!this.expressionElement) {
       throw new Error(`ObjectiveFunctionInput: expression element not found'`);
     }
 
-    this.addButton = this.element.querySelector('.controls .add-button');
+    this.addButton = this.element.querySelector(
+      '.form__input__controls .controls__add',
+    );
     if (!this.addButton) {
       throw new Error(`ObjectiveFunctionInput: add button not found'`);
     }
     this.addButton.addEventListener('click', () => this.addVariableInput());
 
-    this.removeButton = this.element.querySelector('.controls .remove-button');
+    this.removeButton = this.element.querySelector(
+      '.form__input__controls .controls__remove',
+    );
     if (!this.removeButton) {
       throw new Error(`ObjectiveFunctionInput: remove button not found'`);
     }
