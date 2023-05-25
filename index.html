@@ -1,48 +1,65 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="utf-8">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Web site created using create-snowpack-app">
-    <title>Snowpack App</title>
+    <meta name="description" content="Uma calculadora que utiliza o algoritmo Simplex para encontrar uma solução que maximize uma função objetiva em base de restrições estabelecidas">
+    <title>Simplex Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <noscript>Você precisa ter o Javascript habilitado para executar esse
-      site!</noscript>
-
-    <h1>Calculador Simplex</h1>
-    <p>
-      Insira a função objetiva e suas restrições e encontre a solução ótima que
-      a maximiza
-    </p>
-    <div id="form">
-      <span>Maximizar</span>
-      <div id="objective-function-input">
-        <div class="expression">
-          Z =
-          <input type="number"> X1
-        </div>
-        <div class="controls">
-          <button class="add-button">Adicionar</button>
-          <button class="remove-button">Remover</button>
-        </div>
+    <noscript>
+      <div class="error">
+        <h3>Ops! Problemas técnicos.</h3>
+        <img src="./assets/svgs/javascript-error.svg" alt="Pessoa tendo problemas técnicos">
+        Por favor, habilite o JavaScript para utilizar este site.
       </div>
-      <span>Restrições</span>
-      <div id="restrictions-input">
-        <div class="restrictions">
-          <div class="restriction">
-            <input type="number"> X1 ≤
-            <input type="number">
+    </noscript>
+
+    <main>
+      <h1>Calculadora Simplex</h1>
+      <p>
+        Forneça a função <b>objetivo</b> e suas respectivas <b>restrições</b> para que possamos encontrar a solução ótima que <b>maximize</b> seus resultados.
+      </p>
+      <div id="form">
+        <div class="form__input">
+          <h3>Maximizar</h3>
+          <div id="objective-function-input">
+            <div class="form__expression">
+              Z =
+              <input type="number"> X1
+            </div>
+            <div class="form__input__controls">
+              <button class="controls__add"><img src="./assets/icons/plus.svg" alt="Adicionar"></button>
+              <button class="controls__remove"><img src="./assets/icons/minus.svg" alt="Remover"></button>
+            </div>
           </div>
         </div>
-        <div class="controls">
-          <button class="add-button">Adicionar</button>
-          <button class="remove-button">Remover</button>
+        <div class="form__input">
+          <h3>Restrições</h3>
+          <div id="restrictions-input">
+            <div class="form__restrictions">
+              <div class="form__expression">
+                <input type="number"> X1 ≤
+                <input type="number">
+              </div>
+            </div>
+            <div class="form__input__controls">
+              <button class="controls__add"><img src="./assets/icons/plus.svg" alt="Adicionar"></button>
+              <button class="controls__remove"><img src="./assets/icons/minus.svg" alt="Remover"></button>
+            </div>
+          </div>
+        </div>
+        <button id="solve">Resolver</button>
+        <div id="result">
         </div>
       </div>
-      <button id="solve">Resolver</button>
-      <div id="result">
-      </div>
-    </div>
+    </main>
+    <footer>
+      <a href="https://storyset.com/people">People illustrations by Storyset</a>
+    </footer>
     <script type="module" src="./dist/index.js"></script>
   
 

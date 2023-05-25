@@ -7,16 +7,16 @@ var ObjectiveFunctionInput = class {
     if (!this.element) {
       throw new Error(`ObjectiveFunctionInput: no element was found with id '${inputId}'`);
     }
-    this.expressionElement = this.element.querySelector(".expression");
+    this.expressionElement = this.element.querySelector(".form__expression");
     if (!this.expressionElement) {
       throw new Error(`ObjectiveFunctionInput: expression element not found'`);
     }
-    this.addButton = this.element.querySelector(".controls .add-button");
+    this.addButton = this.element.querySelector(".form__input__controls .controls__add");
     if (!this.addButton) {
       throw new Error(`ObjectiveFunctionInput: add button not found'`);
     }
     this.addButton.addEventListener("click", () => this.addVariableInput());
-    this.removeButton = this.element.querySelector(".controls .remove-button");
+    this.removeButton = this.element.querySelector(".form__input__controls .controls__remove");
     if (!this.removeButton) {
       throw new Error(`ObjectiveFunctionInput: remove button not found'`);
     }
@@ -80,16 +80,16 @@ var RestrictionsInputs = class {
     if (!this.element) {
       throw new Error(`RestrictionsInputs: no element was found with id '${restrictionsInputId}'`);
     }
-    this.restrictionsElement = this.element.querySelector(".restrictions");
+    this.restrictionsElement = this.element.querySelector(".form__restrictions");
     if (!this.restrictionsElement) {
       throw new Error(`RestrictionsInputs: restrictions element not found'`);
     }
-    this.addButton = this.element.querySelector(".controls .add-button");
+    this.addButton = this.element.querySelector(".form__input__controls .controls__add");
     if (!this.addButton) {
       throw new Error(`RestrictionsInputs: add button not found'`);
     }
     this.addButton.addEventListener("click", () => this.addRestrictionInput());
-    this.removeButton = this.element.querySelector(".controls .remove-button");
+    this.removeButton = this.element.querySelector(".form__input__controls .controls__remove");
     if (!this.removeButton) {
       throw new Error(`RestrictionsInputs: remove button not found'`);
     }
@@ -156,7 +156,7 @@ var RestrictionsInputs = class {
     this.restrictionsElement.innerHTML = "";
     this.restrictionsInputs.map((restriction) => {
       const restrictionDiv = document.createElement("div");
-      restrictionDiv.classList.add("restriction");
+      restrictionDiv.classList.add("form__expression");
       restriction.map((input, index) => {
         restrictionDiv.append(input);
         if (index < this.numberOfVariables - 2) {
