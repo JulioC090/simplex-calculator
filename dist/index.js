@@ -215,10 +215,19 @@ var SimplexCalculator = class {
     return isSolved;
   }
   iterate() {
+    let hasNegativeMarginalCost = false;
+    this.getSolution().basic.map((variable) => {
+      if (variable.value < 0) {
+        hasNegativeMarginalCost = true;
+      }
+    });
+    if (hasNegativeMarginalCost) {
+      this.isIndeterminate = true;
+      return;
+    }
     let pivoLineIndex = this.simplexTable.getPivoLineIndex();
     if (pivoLineIndex == 0) {
       this.isIndeterminate = true;
-      console.log(this.isIndeterminate);
       return;
     }
     let baseVariableCollumnIndex = this.simplexTable.getBaseVariableCollumnIndex();
@@ -386,6 +395,7 @@ var SimplexTable = class {
     if (lowerPositiveValue < 0) {
       lowerPositiveValueIndex = 0;
     }
+    console.log(this.getStringTable());
     return lowerPositiveValueIndex;
   }
 };
