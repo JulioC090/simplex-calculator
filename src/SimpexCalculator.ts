@@ -12,6 +12,7 @@ export type Solution = {
 };
 export class SimplexCalculator {
   private simplexTable: SimplexTable;
+  private isIndeterminate: boolean = false;
 
   constructor(table: SimplexTable) {
     this.simplexTable = table;
@@ -34,6 +35,12 @@ export class SimplexCalculator {
 
   public iterate(): void {
     let pivoLineIndex = this.simplexTable.getPivoLineIndex();
+
+    if (pivoLineIndex == 0) {
+      this.isIndeterminate = true;
+      console.log(this.isIndeterminate);
+      return;
+    }
 
     let baseVariableCollumnIndex =
       this.simplexTable.getBaseVariableCollumnIndex();
@@ -63,9 +70,13 @@ export class SimplexCalculator {
   }
 
   public solve(): void {
-    while (!this.isSolved()) {
+    while (!this.isSolved() && !this.isIndeterminate) {
       this.iterate();
     }
+  }
+
+  public hasSolution(): boolean {
+    return !this.isIndeterminate;
   }
 
   public getSolution(): Solution {

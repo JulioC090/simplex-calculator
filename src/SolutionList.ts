@@ -5,6 +5,8 @@ export class SolutionList {
   private solution: Solution | null = null;
   private list: HTMLElement;
 
+  private isIndeterminate: boolean = false;
+
   constructor(id: string, solution: Solution | null) {
     this.element = document.getElementById(id);
     if (!this.element) {
@@ -37,13 +39,20 @@ export class SolutionList {
 
   public setSolution(solution: Solution | null) {
     this.solution = solution;
+    this.list.innerText = '';
     if (this.solution) {
       this.render();
     }
   }
 
+  public setIsIndeterminate(isIndeterminate: boolean) {
+    this.isIndeterminate = isIndeterminate;
+  }
+
   private render() {
     this.list.innerText = '';
+    if (this.isIndeterminate)
+      this.list.append(this.createH4('Solução Indeterminada'));
     this.list.append(this.createH4('Variáveis Básicas'));
     this.list.append(this.createList(this.solution!.basic));
     this.list.append(this.createH4('Variáveis Não Básicas'));

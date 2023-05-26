@@ -130,6 +130,10 @@ export class SimplexTable {
       }
     }
 
+    if (lowerPositiveValue < 0) {
+      lowerPositiveValueIndex = 0;
+    }
+
     return lowerPositiveValueIndex;
   }
 }
