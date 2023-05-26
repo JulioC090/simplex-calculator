@@ -19,6 +19,14 @@ export class SolutionList {
     this.setSolution(solution);
   }
 
+  private createH3(text: string): HTMLElement {
+    let h3 = document.createElement('h3');
+    let textElement = document.createTextNode(text);
+    h3.append(textElement);
+    h3.classList.add('green');
+    return h3;
+  }
+
   private createH4(text: string): HTMLElement {
     let h4 = document.createElement('h4');
     let textElement = document.createTextNode(text);
@@ -51,6 +59,7 @@ export class SolutionList {
 
   private render() {
     this.list.innerText = '';
+    this.list.append(this.createH3(`Z = ${this.solution!.max}`));
     if (this.isIndeterminate)
       this.list.append(this.createH4('Solução Indeterminada'));
     this.list.append(this.createH4('Variáveis Básicas'));

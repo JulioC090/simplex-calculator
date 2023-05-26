@@ -1,6 +1,7 @@
 import { SimplexTable } from './SimplexTable';
 
 export type Solution = {
+  max: number;
   basic: Array<{
     variable: string;
     value: number;
@@ -94,11 +95,12 @@ export class SimplexCalculator {
   public getSolution(): Solution {
     const table = this.simplexTable.getTable();
     const solution: Solution = {
+      max: table[0][0],
       basic: [],
       notBasic: [],
     };
 
-    for (let j = 0; j < table[0].length - 1; j++) {
+    for (let j = 1; j < table[0].length - 1; j++) {
       let isBasic = true;
       let index = 0;
       let amountOfNumber = 0;
