@@ -10,7 +10,12 @@ export class Table {
     }
     this.content = content;
     this.table = document.createElement('table');
-    this.element.append(this.table);
+
+    const div = document.createElement('div');
+    div.classList.add('table');
+    div.append(this.table);
+
+    this.element.append(div);
     this.render();
   }
 
