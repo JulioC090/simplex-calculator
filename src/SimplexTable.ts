@@ -134,6 +134,8 @@ export class SimplexTable {
       lowerPositiveValueIndex = 0;
     }
 
+    console.log(this.getStringTable());
+
     return lowerPositiveValueIndex;
   }
 }

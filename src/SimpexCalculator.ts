@@ -34,11 +34,23 @@ export class SimplexCalculator {
   }
 
   public iterate(): void {
+    let hasNegativeMarginalCost = false;
+
+    this.getSolution().basic.map((variable) => {
+      if (variable.value < 0) {
+        hasNegativeMarginalCost = true;
+      }
+    });
+
+    if (hasNegativeMarginalCost) {
+      this.isIndeterminate = true;
+      return;
+    }
+
     let pivoLineIndex = this.simplexTable.getPivoLineIndex();
 
     if (pivoLineIndex == 0) {
       this.isIndeterminate = true;
-      console.log(this.isIndeterminate);
       return;
     }
 
