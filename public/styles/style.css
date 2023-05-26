@@ -85,13 +85,28 @@ footer {
   background-color: var(--black);
   min-width: 100%;
   padding: 2rem;
-  color: var(--white);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer h4,
+footer p {
+  color: var(--white);
+}
+
+footer h4 {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
 footer a {
   color: var(--green-300);
+}
+
+footer section {
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 noscript {
