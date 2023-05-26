@@ -136,7 +136,7 @@ noscript {
 #restrictions-input .form__restrictions {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.5rem;
 }
 .form__input__controls {
   margin-top: 0.5rem;
