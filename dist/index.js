@@ -198,6 +198,7 @@ var InputsManager = class {
 // build/dist/SimpexCalculator.js
 var SimplexCalculator = class {
   constructor(table) {
+    this.isIndeterminate = false;
     this.simplexTable = table;
   }
   getSimplexTable() {
@@ -215,6 +216,11 @@ var SimplexCalculator = class {
   }
   iterate() {
     let pivoLineIndex = this.simplexTable.getPivoLineIndex();
+    if (pivoLineIndex == 0) {
+      this.isIndeterminate = true;
+      console.log(this.isIndeterminate);
+      return;
+    }
     let baseVariableCollumnIndex = this.simplexTable.getBaseVariableCollumnIndex();
     let pivoElement = this.simplexTable.getElement(pivoLineIndex, baseVariableCollumnIndex);
     let newPivoLine = this.simplexTable.getLine(pivoLineIndex).map((value) => {
@@ -232,9 +238,12 @@ var SimplexCalculator = class {
     });
   }
   solve() {
-    while (!this.isSolved()) {
+    while (!this.isSolved() && !this.isIndeterminate) {
       this.iterate();
     }
+  }
+  hasSolution() {
+    return !this.isIndeterminate;
   }
   getSolution() {
     const table = this.simplexTable.getTable();
@@ -374,6 +383,9 @@ var SimplexTable = class {
         lowerPositiveValueIndex = i;
       }
     }
+    if (lowerPositiveValue < 0) {
+      lowerPositiveValueIndex = 0;
+    }
     return lowerPositiveValueIndex;
   }
 };
@@ -382,6 +394,7 @@ var SimplexTable = class {
 var SolutionList = class {
   constructor(id, solution) {
     this.solution = null;
+    this.isIndeterminate = false;
     this.element = document.getElementById(id);
     if (!this.element) {
       throw new Error(`Table: no element was found with id '${id}'`);
@@ -409,12 +422,18 @@ var SolutionList = class {
   }
   setSolution(solution) {
     this.solution = solution;
+    this.list.innerText = "";
     if (this.solution) {
       this.render();
     }
   }
+  setIsIndeterminate(isIndeterminate) {
+    this.isIndeterminate = isIndeterminate;
+  }
   render() {
     this.list.innerText = "";
+    if (this.isIndeterminate)
+      this.list.append(this.createH4("Solução Indeterminada"));
     this.list.append(this.createH4("Variáveis Básicas"));
     this.list.append(this.createList(this.solution.basic));
     this.list.append(this.createH4("Variáveis Não Básicas"));
@@ -468,12 +487,15 @@ var tableElement = new Table("result", []);
 var solutionListElement = new SolutionList("result", null);
 var solveButton = document.getElementById("solve");
 solveButton?.addEventListener("click", (event) => {
-  const result = document.getElementById("result");
+  const resultElement = document.getElementById("result");
   const simplexTable = new SimplexTable(inputsManager.getValues());
   const simpexCalculator = new SimplexCalculator(simplexTable);
   simpexCalculator.solve();
-  tableElement.setContent(simpexCalculator.getSimplexTable().getStringTable());
-  solutionListElement.setSolution(simpexCalculator.getSolution());
-  result?.classList.remove("none");
+  const result = simpexCalculator.getSimplexTable();
+  const solution = simpexCalculator.getSolution();
+  tableElement.setContent(result.getStringTable());
+  solutionListElement.setIsIndeterminate(!simpexCalculator.hasSolution());
+  solutionListElement.setSolution(solution);
+  resultElement?.classList.remove("none");
 });
 //# sourceMappingURL=index.js.map
