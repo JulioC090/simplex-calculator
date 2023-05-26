@@ -1,6 +1,7 @@
 :root {
   --black: #030712;
   --white: #f9fafb;
+  --gray-100: #f3f4f6;
   --green-300: #86efac;
   --green-400: #4ade80;
   --green-500: #22c55e;
@@ -51,14 +52,28 @@ b {
 main {
   min-width: 100%;
   min-height: 100vh;
+}
+
+.none {
+  display: none !important;
+}
+
+.container {
+  width: 100%;
+  max-width: 1024px;
   padding: 2rem;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 2rem;
 }
 
-main p {
+.container img {
+  max-width: 360px;
+}
+
+.container p {
   text-align: justify;
 }
 
@@ -137,7 +152,7 @@ noscript {
 #restrictions-input .form__restrictions {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.5rem;
 }
 
 .form__input__controls {
@@ -181,6 +196,9 @@ noscript {
 }
 
 #solve {
+  width: 100%;
+  max-width: 360px;
+  align-self: center;
   background-color: var(--green-600);
   color: var(--white);
   padding: 0.5rem;
@@ -195,4 +213,42 @@ noscript {
 
 #solve:active {
   background-color: var(--green-400);
+}
+
+#result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#result table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#result table,
+tr,
+th,
+td {
+  border: var(--black) 1px solid;
+  text-align: center;
+}
+
+#result table tr:nth-child(odd) {
+  background-color: var(--gray-100);
+}
+
+#result table th {
+  background-color: var(--green-300);
+}
+
+#result .solution {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#result .solution ul {
+  margin-left: 1rem;
 }

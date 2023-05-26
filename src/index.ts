@@ -14,9 +14,11 @@ const solutionListElement = new SolutionList('result', null);
 
 const solveButton = document.getElementById('solve');
 solveButton?.addEventListener('click', (event) => {
+  const result = document.getElementById('result');
   const simplexTable = new SimplexTable(inputsManager.getValues());
   const simpexCalculator = new SimplexCalculator(simplexTable);
   simpexCalculator.solve();
   tableElement.setContent(simpexCalculator.getSimplexTable().getStringTable());
   solutionListElement.setSolution(simpexCalculator.getSolution());
+  result?.classList.remove('none');
 });

@@ -12,15 +12,16 @@ export class SolutionList {
     }
 
     this.list = document.createElement('div');
+    this.list.classList.add('solution');
     this.element.append(this.list);
     this.setSolution(solution);
   }
 
-  private createParagraph(text: string): HTMLElement {
-    let p = document.createElement('p');
+  private createH4(text: string): HTMLElement {
+    let h4 = document.createElement('h4');
     let textElement = document.createTextNode(text);
-    p.append(textElement);
-    return p;
+    h4.append(textElement);
+    return h4;
   }
 
   private createList(content: Array<{ variable: string; value: number }>) {
@@ -43,10 +44,9 @@ export class SolutionList {
 
   private render() {
     this.list.innerText = '';
-    this.list.append(this.createParagraph('Solução'));
-    this.list.append(this.createParagraph('Variáveis Básicas'));
+    this.list.append(this.createH4('Variáveis Básicas'));
     this.list.append(this.createList(this.solution!.basic));
-    this.list.append(this.createParagraph('Variáveis Não Básicas'));
+    this.list.append(this.createH4('Variáveis Não Básicas'));
     this.list.append(this.createList(this.solution!.notBasic));
   }
 }

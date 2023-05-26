@@ -9,56 +9,76 @@
       content="Uma calculadora que utiliza o algoritmo Simplex para encontrar uma solução que maximize uma função objetiva em base de restrições estabelecidas"
     />
     <title>Simplex Calculator</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
     <noscript>
       <div class="error">
         <h3>Ops! Problemas técnicos.</h3>
-        <img src="./assets/svgs/javascript-error.svg" alt="Pessoa tendo problemas técnicos">
+        <img
+          src="./assets/svgs/javascript-error.svg"
+          alt="Pessoa tendo problemas técnicos"
+        />
         Por favor, habilite o JavaScript para utilizar este site.
       </div>
     </noscript>
 
     <main>
-      <h1>Calculadora Simplex</h1>
-      <p>
-        Forneça a função <b>objetivo</b> e suas respectivas <b>restrições</b> para que possamos encontrar a solução ótima que <b>maximize</b> seus resultados.
-      </p>
-      <div id="form">
-        <div class="form__input">
-          <h3>Maximizar</h3>
-          <div id="objective-function-input">
-            <div class="form__expression">
-              Z =
-              <input type="number" /> X1
-            </div>
-            <div class="form__input__controls">
-              <button class="controls__add"><img src="./assets/icons/plus.svg" alt="Adicionar"/></button>
-              <button class="controls__remove"><img src="./assets/icons/minus.svg" alt="Remover"></button>
-            </div>
-          </div>
-        </div>
-        <div class="form__input">
-          <h3>Restrições</h3>
-          <div id="restrictions-input">
-            <div class="form__restrictions">
+      <div class="container">
+        <h1>Calculadora Simplex</h1>
+        <img src="./assets/svgs/simplex-ilustration.svg" alt="Ilustração do simplex">
+        <p>
+          Forneça a função <b>objetivo</b> e suas respectivas
+          <b>restrições</b> para que possamos encontrar a solução ótima que
+          <b>maximize</b> seus resultados.
+        </p>
+        <div id="form">
+          <div class="form__input">
+            <h3>Maximizar</h3>
+            <div id="objective-function-input">
               <div class="form__expression">
-                <input type="number" /> X1 ≤
-                <input type="number" />
+                Z =
+                <input type="number" /> X1
+              </div>
+              <div class="form__input__controls">
+                <button class="controls__add">
+                  <img src="./assets/icons/plus.svg" alt="Adicionar" />
+                </button>
+                <button class="controls__remove">
+                  <img src="./assets/icons/minus.svg" alt="Remover" />
+                </button>
               </div>
             </div>
-            <div class="form__input__controls">
-              <button class="controls__add"><img src="./assets/icons/plus.svg" alt="Adicionar"/></button>
-              <button class="controls__remove"><img src="./assets/icons/minus.svg" alt="Remover"></button>
+          </div>
+          <div class="form__input">
+            <h3>Restrições</h3>
+            <div id="restrictions-input">
+              <div class="form__restrictions">
+                <div class="form__expression">
+                  <input type="number" /> X1 ≤
+                  <input type="number" />
+                </div>
+              </div>
+              <div class="form__input__controls">
+                <button class="controls__add">
+                  <img src="./assets/icons/plus.svg" alt="Adicionar" />
+                </button>
+                <button class="controls__remove">
+                  <img src="./assets/icons/minus.svg" alt="Remover" />
+                </button>
+              </div>
             </div>
           </div>
+          <button id="solve">Resolver</button>
         </div>
-        <button id="solve">Resolver</button>
-        <div id="result">
+        <div id="result" class="none">
+          <h3>Solução</h3>
         </div>
       </div>
     </main>
