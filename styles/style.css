@@ -42,6 +42,9 @@ h3 {
 b {
   font-weight: 600;
 }
+input {
+  width: 5rem;
+}
 main {
   min-width: 100%;
   min-height: 100vh;
@@ -108,16 +111,20 @@ noscript {
   }
 }
 #form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 .form__input {
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  overflow: auto;
 }
 .form__expression {
+  white-space: nowrap;
   font-style: italic;
   line-height: 1.75rem;
 }
@@ -187,6 +194,9 @@ noscript {
   flex-direction: column;
   gap: 1rem;
 }
+#result .table {
+  overflow-x: auto;
+}
 #result table {
   width: 100%;
   border-collapse: collapse;
@@ -197,6 +207,7 @@ th,
 td {
   border: var(--black) 1px solid;
   text-align: center;
+  padding: 0.25rem;
 }
 #result table tr:nth-child(odd) {
   background-color: var(--gray-100);
