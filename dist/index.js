@@ -387,14 +387,15 @@ var SolutionList = class {
       throw new Error(`Table: no element was found with id '${id}'`);
     }
     this.list = document.createElement("div");
+    this.list.classList.add("solution");
     this.element.append(this.list);
     this.setSolution(solution);
   }
-  createParagraph(text) {
-    let p = document.createElement("p");
+  createH4(text) {
+    let h4 = document.createElement("h4");
     let textElement = document.createTextNode(text);
-    p.append(textElement);
-    return p;
+    h4.append(textElement);
+    return h4;
   }
   createList(content) {
     let ul = document.createElement("ul");
@@ -414,10 +415,9 @@ var SolutionList = class {
   }
   render() {
     this.list.innerText = "";
-    this.list.append(this.createParagraph("Solução"));
-    this.list.append(this.createParagraph("Variáveis Básicas"));
+    this.list.append(this.createH4("Variáveis Básicas"));
     this.list.append(this.createList(this.solution.basic));
-    this.list.append(this.createParagraph("Variáveis Não Básicas"));
+    this.list.append(this.createH4("Variáveis Não Básicas"));
     this.list.append(this.createList(this.solution.notBasic));
   }
 };
@@ -465,10 +465,12 @@ var tableElement = new Table("result", []);
 var solutionListElement = new SolutionList("result", null);
 var solveButton = document.getElementById("solve");
 solveButton?.addEventListener("click", (event) => {
+  const result = document.getElementById("result");
   const simplexTable = new SimplexTable(inputsManager.getValues());
   const simpexCalculator = new SimplexCalculator(simplexTable);
   simpexCalculator.solve();
   tableElement.setContent(simpexCalculator.getSimplexTable().getStringTable());
   solutionListElement.setSolution(simpexCalculator.getSolution());
+  result?.classList.remove("none");
 });
 //# sourceMappingURL=index.js.map
