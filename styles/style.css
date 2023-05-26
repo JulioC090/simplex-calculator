@@ -39,6 +39,9 @@ h2 {
 h3 {
   font-size: 1.25rem;
 }
+h4 {
+  font-weight: 600;
+}
 b {
   font-weight: 600;
 }
@@ -51,6 +54,9 @@ main {
 }
 .none {
   display: none !important;
+}
+.green {
+  color: var(--green-500);
 }
 .container {
   width: 100%;

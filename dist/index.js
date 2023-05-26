@@ -257,10 +257,11 @@ var SimplexCalculator = class {
   getSolution() {
     const table = this.simplexTable.getTable();
     const solution = {
+      max: table[0][0],
       basic: [],
       notBasic: []
     };
-    for (let j = 0; j < table[0].length - 1; j++) {
+    for (let j = 1; j < table[0].length - 1; j++) {
       let isBasic = true;
       let index = 0;
       let amountOfNumber = 0;
@@ -414,6 +415,13 @@ var SolutionList = class {
     this.element.append(this.list);
     this.setSolution(solution);
   }
+  createH3(text) {
+    let h3 = document.createElement("h3");
+    let textElement = document.createTextNode(text);
+    h3.append(textElement);
+    h3.classList.add("green");
+    return h3;
+  }
   createH4(text) {
     let h4 = document.createElement("h4");
     let textElement = document.createTextNode(text);
@@ -442,6 +450,7 @@ var SolutionList = class {
   }
   render() {
     this.list.innerText = "";
+    this.list.append(this.createH3(`Z = ${this.solution.max}`));
     if (this.isIndeterminate)
       this.list.append(this.createH4("Solução Indeterminada"));
     this.list.append(this.createH4("Variáveis Básicas"));
