@@ -95,7 +95,7 @@ export class SimplexCalculator {
   public getSolution(): Solution {
     const table = this.simplexTable.getTable();
     const solution: Solution = {
-      max: table[0][0],
+      max: this.simplexTable.getBValue(0),
       basic: [],
       notBasic: [],
     };
