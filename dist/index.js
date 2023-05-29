@@ -257,7 +257,7 @@ var SimplexCalculator = class {
   getSolution() {
     const table = this.simplexTable.getTable();
     const solution = {
-      max: table[0][0],
+      max: this.simplexTable.getBValue(0),
       basic: [],
       notBasic: []
     };
