@@ -1,6 +1,10 @@
 <h1 align="center">Simplex Calculator</h1>
 
+![simplex-calculator](https://github.com/JulioC090/simplex-calculator/assets/64113858/de512398-2cab-481e-814c-c2f14556ac44)
+
 Este é um projeto de faculdade vinculada a matéria de Programação Linear e Aplicações, tendo como objetivo criar uma calculadora que utiliza o algoritmo Simplex para encontrar uma solução que maximize uma função objetivo em base de restrições estabelecidas.
+
+Demo: <https://julioc090.github.io/simplex-calculator/>
 
 ## Sumário
 
